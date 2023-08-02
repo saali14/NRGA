@@ -1,0 +1,101 @@
+## names of the files
+input_file_reference 	= "./ccpd_data/Test_041214/shape_in_X.ply"
+input_file_sample 	= "./ccpd_data/Test_041214/shape_registered_non_rigid.ply"
+output_file_name	= "./ccpd_data/Test_041214/REGISTERED_NEW.ply"
+
+## constraints load settings
+use_constraints		= 1		## use constraints :: run constraint or unconstraint CPD
+use_landmarks		= 1		## read from landmarks files or from a constraint file
+#input_file_constraints	= "./ccpd_data/Test_041214/constr.txt"
+landmarks_template	= "ccpd_data/Test_041214/constraints/Landmarks_template.txt" 
+landmarks_scan		= "ccpd_data/Test_041214/constraints/Landmarks_scan.txt"
+
+## partial registration settings
+partial_reg		= 1		## partial registration (idx files, listed in index_file_names, refer to regions)
+
+index_file_names	= ["ccpd_data/Test_041214/Template_parts/head.idx",
+			   "ccpd_data/Test_041214/Template_parts/left_leg.idx",
+			   "ccpd_data/Test_041214/Template_parts/right_leg.idx"]
+
+projection_type		= 0		## type of projection (0 - no projection; 1 - global projection; 2 - local projection, only jointly with partial registration)
+
+averaging		= 1		## average coordinates on the stiches (0 - do not apply averaging; 1 - apply averaging)			   
+
+## mapping parameters
+compute_corresp 	= 1		## compute correspondences file after registration
+##corresp_file_name 	= "corresp.txt"
+corresp_file_name 	= "./ccpd_data/correspondences.txt"			   		   		   
+			   
+## color parameters
+color_flag		= 2		## color of the registered point cloud (0 : no color; 1 : transfer original colors; 2 : use the same color for all points (use parameter color))
+color			= [0, 255, 100] ## color value for the registered point cloud
+
+## subsampling setting
+subsampling_factor_ref	= 20		## subsampling factor for the reference point cloud
+subsampling_factor	= 5		## subsampling factor for the sample point cloud
+
+## constraint non-rigid registration algorithm settings
+outliers		= 0.1		## weight of the uniform distribution, reflects the assumption about the percentage of noise
+constraint_alpha 	= 0.0001	## constraints influence factor, reflects uncertainty level about constraints (the more certain, the lower the value of alpha)
+					## alpha is a relative parameter, which depends on the number of points in registered point clouds
+normalize		= 1		## normalize to unit variance and zero mean before registering
+max_it			= 250		## maximal number of iterations of the EM algorithm
+tol			= 1e-5		## dL tolerance (or step-size of the EM algorithm), the convergence criterion on the objective function L (also denoted as Q);
+					## in the non-rigid case the GMM centroid locations are parameterized through a function v(),
+					## which describes the registration transform and is estimated variationally through the minimization of L
+sigma2_tol		= 1e-8		## threshold on sigma^2, an additional possible stopping criterion
+
+## weights
+beta			= 10.0		## the width of smoothing Gaussian filter, a frequency adjustment parameter (defines the model of the smoothness regularizer)
+lambda			= 10.0		## weight of the coherency term (or smoothness term) in variational formulation of the log-likelihood function;
+					## controls relative weighting between the data and regularization terms (or the trade-off between the goodness of maximum likelihood
+					## fit and regularization)
+## adaptation settings
+segmentation		= 0		## detect overlapped regions and compensate for nonoutliers
+adapt_beta		= 1.0		## beta adaptation threshold, minimal allowed value of beta (if <= 0.0, no beta adaptation is used)
+adapt_steps 		= 5		## maximal number of beta adaptation steps
+
+
+## special algorithm control and performance settings
+numeig 			= 30		## # of eigenvectors/values to approximate G matrix
+fgt 			= 2		## use FGT to compute matrix-vector products (2 means switch to truncated version at the end, 1 means use fgt until converged)
+K			= 0		## number of centers (K = 0 default)
+					## if fgt == 2
+					## if K == 0 (K is not set): truncated approximation of P1, Pt1 and PX used, if the threshold for switching to truncation is reached (see sigma2_threshold)
+					## if K != 0 (K is set)    : no truncated approximation, K is fixed after the threshold for switching to truncation reached (see sigma2_threshold)
+					## if fgt == 1
+					## if K == 0 : default number of centers used
+					## if K != 0 : number of centers is fixed and set to K (not recommended to use)
+
+sigma2_init		= 1.0		## initial value of sigma^2 (the value < 0.0 means the parameter will be determined automatically)
+sigma2_threshold 	= 0.015		## if fgt == 1, sets saturation threshold (which is equals to (sigma2_threshold * sigma2_init)) on sigma^2 
+					## if fgt == 2, sets threshold (which is equals to (sigma2_threshold * sigma2_init)) on sigma^2 for switching to truncation 
+					## the parameter should belong to the range [0.01, 0.1); 0.015 is default
+Kt1_zero		= 1e-10		## log(0) approximation
+						
+P 	 		= 5.0     	## truncation order, for performance reasons needs to be the same for all fgt computations
+					## NOTE the parameter PD_ = nchoosek(P + D - 1 , D) should be also set in cpd_kernels.h; the 
+					## parameter PD_ depends on P and D = 3; 
+					## for convenience the table with the first 10 pair values provided ((P=, PD=), ...):
+					## ((1, 1) (2,4) (3,10), (4,20), (5,35), (6,56), (7,84), (8,120), (9,165), (10,220)).
+										
+e1 			= 8.0		## ratio of far field in the Fast Gauss Transform (for approximation of the kernel matrix G on the initialization and adaptation steps)
+e2			= 9.0		## ratio of far field in the Fast Gauss Transform (for computing P1, Pt1 and PX)
+iram_tol 		= 2.2204e-16 	## custom precision for eigenvalue decomposition with Implicitly Restarted Arnoldi Method
+					## (0.0d means use machine epsilon)
+					
+## gpu settings
+device_N		= 0		## number of the gpu device to run kernels on
+					## (run nvidia-smi to list all available gpus on your system)
+					## if there is only one gpu on your system, this settings should be 0
+					## tune launch parameters for the selected graphics card in cpd_kernels.cu
+				
+cache_config		= 1		## choose the preferred cache configuration for the device
+					## 0 : cudaFuncCachePreferNone
+					## 1 : cudaFuncCachePreferEqual
+					## 2 : cudaFuncCachePreferL1
+					## 3 : cudaFuncCachePreferShared
+				
+## openmp settings
+n_threads		= 8		## number of threads, used for open_mp accelerated functions
+

@@ -1,0 +1,147 @@
+## names of the input files
+##in_template			= "/home/ali/02_PHD_Ali/04_DATASETS/CosineSurfaces/CosineSurface_mesh.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/04_DATASETS/CosineSurfaces/CosineSurface_mesh.ply"
+##in_template			= "/home/ali/02_PHD_Ali/04_DATASETS/CosineSurfaces/PlaneImposedSurface.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/04_DATASETS/CosineSurfaces/CosineSurface.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/PlaneImposedSurface.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/CosineSurface.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_template_RGA.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_reference_RGA.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_template_RGA.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_reference_RGA.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/PlaneImposedSurface_SignedCurvature.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/CosineSurface_signedCurvature.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_template_RGA_GaussianCurvature.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/line_reference_RGA_gaussianCurvature.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/circle_template _RGA_GaussianCurvature.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/circle_reference _RGA_GaussianCurvature.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/char_template_GaussianCurvature.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/char_reference_GaussianCurvature.ply"
+##in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/head_anger_5000v.ply"
+##in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/head_laugh_5000v.ply"
+in_template			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/TEMPLATE_Crude.ply"
+in_reference 			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/INPUT/Vlad_Frontal_face.ply"
+in_template_subsample		= ""
+in_reference_subsample		= ""
+in_Transformation		= ""
+
+## input glsl shader files
+in_shaderPath_TMeshVert		= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/vertex_shader_Template.glsl"
+in_shaderPath_RMeshVert		= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/vertex_shader_Reference.glsl"
+in_shaderPath_TPointsVert	= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/vertex_shader_TemplatePoints.glsl"
+in_shaderPath_RPointsVert	= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/vertex_shader_ReferencePoints.glsl"
+in_shaderPath_TMeshFrag		= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders fragment_shader_Template.glsl"
+in_shaderPath_RMeshFrag		= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/fragment_shader_Reference.glsl"
+in_shaderPath_TPointsFrag	= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/fragment_shader_TemplatePoints.glsl"
+in_shaderPath_RPointsFrag	= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/shaders/fragment_shader_ReferencePoints.glsl"
+
+## output file after nonrigid registration
+out_registered			= "/home/ali/02_PHD_Ali/03_INDEPENDENT_RESEARCH/02_NRGA/NRGA_Application/DATA/OUTPUT/";
+
+## color of the registered point cloud
+bgColor				= [0.0, 0.0, 0.0, 0.0]
+LightPositionT			= [-20.0, 10.0, -40.0, 10.0]
+LDeffuseColorT			= [0.8, 0.8, 0.8]
+LSpecularColorT			= [0.5, 0.5, 0.5]
+LAmbientColorT			= [0.2, 0.2, 0.2]
+MDiffuseT			= [0.84, 0.37, 0.06]
+MSpecularT			= [0.6, 0.21, 0.07]
+MAmbientT			= [0.5, 0.5, 0.5]
+MShinynessT			= 43.0
+LightPositionR			= [-20.0, 10.0, -40.0, 10.0]
+LDeffuseColorR			= [0.8, 0.8, 0.8]
+LSpecularColorR			= [0.5, 0.5, 0.5]
+LAmbientColorR			= [0.2, 0.2, 0.2]
+MDiffuseR			= [0.0, 0.68, 0.44]
+MSpecularR			= [0.2, 0.41, 1.0]
+MAmbientR			= [0.0, 0.43, 0.91]
+MShinynessR			= 43.0
+color_flag			= 0
+p_color_default			= [0, 0, 255]
+p_color_template		= [255, 0, 0]	
+p_color_reference		= [0, 255, 0]
+p_color_output			= 0		## 0 - default output color
+						## 1 - transfer colors from input
+						## 2 - use the same color for all points (color parameter)
+
+## OpenGL Gui Window settings parameters
+p_window_width  	= 740.0		## Width of OpenGL window in terms of pixel resolution
+p_window_height 	= 740.0		## Height of OpenGL window in terms of pixel resolution
+p_window_depth 		= 740.0		## Depth of OpenGL window in terms of pixel resolution
+p_left_bound 		= -8.0		## Left bound of OpenGL window 
+p_right_bound 		= +8.0		## Right bound of OpenGL window 
+p_top_bound 		= +8.0		## Upper bound of OpenGL window
+p_bottom_bound 		= -8.0		## Lower bound of OpenGL window 
+
+## Rigid Registration parameters under Viscous Gravitational Force
+p_dimension		= 3.0		## dimension of the point. if depth absent then 2 else 3 		    
+p_G 			= 0.0067		## Gravitational Constant Value
+p_mass 	 		= 1.0		## Mass of a single "Reference" or "Reference" point (The default mass value)
+p_MT 			= 1.0		## Mass of a single "Template" point
+p_MR 			= 1.0		## Mass of a single "Reference" point
+p_epsilon 		= 0.09		## Gravistional Force Softening parameter
+p_GPE			= 0.0		## Gravitational Potential Enrgy Parameter
+p_ballRadius		= 0.001		## Numerical Stability with ball radius
+p_dilatation 		= 0.20		## Gravitational Viscosity parameters
+p_spaceCurvature	= 0.1		## presumable curvature of Spoace		
+p_accX 			= 0.0		## Initial acceleration in the direction of X-axis assumed for every point in the "Template" body
+p_accY 			= 0.0		## Initial acceleration in the direction of Y-axis assumed for every point in the "Template" body
+p_accZ 			= 0.0		## Initial acceleration in the direction of Z-axis assumed for every point in the "Template" body
+p_vel_X 		= 0.0		## Initial Velocity in the direction of X-axis assumed for every point in the "Template" body
+p_vel_Y 		= 0.0		## Initial Velocity in the direction of Y-axis assumed for every point in the "Template" body
+p_vel_Z 		= 0.0		## Initial Velocity in the direction of Z-axis assumed for every point in the "Template" body
+p_theta_X 		= 0.0		## Initial axix-angle to rotate "Template" w.r.t X-axis
+p_theta_Y 		= 0.0		## Initial axix-angle to rotate "Template" w.r.t Y-axis
+p_theta_Z 		= 0.0		## Initial axix-angle to rotate "Template" w.r.t Z-axis
+p_translation_x 	= 0.0		## Initial translation displace "Template" w.r.t X-axis
+p_translation_y 	= 0.0		## Initial translation displace "Template" w.r.t Y-axis
+p_translation_z 	= 0.0		## Initial translation displace "Template" w.r.t Z-axis
+p_scale_xyz 		= 1.0		## Initial Scaling of Template in all Three axial direction 
+k_T 			= 100		## K-nearest points in template
+k_R 			= 100		## K-nearest points in Reference
+dimT 			= 3		## dimensionality of points in template
+dimR 			= 3		## dimensionality of points in template
+useMaterialColor	= false
+useShadersT 		= true		## Use shaders for template points flag
+useShadersR 		= true		## Use shaders for template points flag
+useShadersRMesh		= false 
+useShadersRPoints	= true
+useShadersTMesh		= false
+useShadersTPoints	= true
+pointSize 		= 3.0		## Point size in terms of pixels in Screen Space OpenGL 				      
+	
+## MASS-SPRING parameter settings
+p_timeStep 		= 0.006 
+p_spring_Constraint 	= 0.00008
+p_damping_Constraint 	= 0.1
+p_stretch_Constraint	= 0.001
+p_bend_Constraint 	= 2.0
+p_spring_Mass		= 0.0
+p_rotation_max		= 0.0
+	      
+##constraint rigid registration settings
+p_normalize_flag	= 0		## normalize to unit variance and zero mean before registering (default)
+p_mass_normalize_flag   = 0		## normalize the mass of every particle w.r.t the total sum of the points
+p_Subsampled_TR_flag	= 0		## Use subsampled Template and Reference Point Cloud to register Original 
+p_addnoise_flag		= 0		## if noise are to be added to the template 0 --> No , 1---> Yes
+p_noise_type		= "X"		## Type of noise distribution around "Template's" Center of Mass
+					## "G" --> Gaussian Distribution 
+					## "U" --> Uniform Distribution
+p_GA_Type_flag		= 1		## 1   --> using latest cubic spline polynomial function of Gravitational Force
+					## 2   --> using near plane and far plane of Reference points by KD Tree
+					## 3   --> Subsampled template and reference using cubic spline polynomial function of Gravitational Force
+					## 4   --> don't use
+					## 5   --> don't use
+
+p_noiseG_sigma		= 0.1		##  
+p_noiseG_mean		= 0.01		##
+p_noiseU_Xmin		= 0.1		##
+p_noiseU_Xmax		= 0.1		##
+p_noiseU_Ymin		= 0.1		##
+p_noiseU_Ymax		= 0.1		##
+p_noiseU_Zmin		= 0.1		##
+p_noiseU_Zmax		= 0.1		##					
+p_noise_percentage	= 0.0		## Percentage of Noise to be added in "Template"
+p_max_iterations	= 200		## max number of iterations
+p_tol			= 0.0001	## fault tolerance
+p_Reps			= 1

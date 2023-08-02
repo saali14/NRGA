@@ -1,0 +1,50 @@
+#ifndef _NRGA_
+#define _NRGA_
+
+/*
+ *  @Author : Sk Aziz Ali
+ *  @Place  : DFKI GmbH, Kaiserslautern, Germany
+ *  @Date   : 22nd October, 2016
+*/
+
+#pragma once
+
+#include "parameters.h"
+#include "KD_Tree.h"
+
+template<typename T>
+class NRGA
+{
+public:
+	NRGA();
+	~NRGA();
+
+	parameters<T>* param;
+
+	void		NRGA_setParameters(parameters<T>* param);
+	parameters<T>* NRGA_getParameters();
+	
+	void NRGA_setT(shape_point<T>* Tpt);
+	shape_point<T>* NRGA_getT();
+
+	void NRGA_setCurrIterNo(long int currIterNo);
+	void NRGA_simulate();
+	void NRGA_CurveSpaceGravitational_Force3D(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, int p_numPoints_T, int p_numPoints_R);
+	
+	void NRGA_Gravitational_Force3D(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Gravitational_Force3D_NearPlane(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, kdt_nanoFlann<T>* kdtreeT, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Gravitational_Force3D_ARAP1(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, kdt_nanoFlann<T>* kdtree, kdt_nanoFlann<T>* kdtreeR, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Gravitational_Force3D_ARAP2(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, kdt_nanoFlann<T>* kdtree, kdt_nanoFlann<T>* kdtreeR, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Gravitational_Force3D_ARAP3(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, kdt_nanoFlann<T>* kdtree, kdt_nanoFlann<T>* kdtreeR, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Gravitational_Force2D(point<T>* template_points, point<T>* reference_points, point<T>* template_pts_prev, int p_numPoints_T, int p_numPoints_R);
+
+	void NRGA_Spring_Force2D(point<T>* template_points, point<T>* template_pts_prev, int p_numPoints_T, int p_numPoints_R);
+	void NRGA_Spring_Force3D(point<T>* template_points, point<T>* template_pts_prev, Eigen::Matrix<T, 3, 1>& centroid_template_curr, Eigen::Matrix<T, 3, 1>& centroid_template_prev,  int p_numPoints_T, int p_numPoints_R);
+	void NRGA_sineDistort(point<T>* p, int numPts);
+
+private:
+	shape_point<T>* Tpt;
+	long int currIterNo;
+};
+
+#endif
